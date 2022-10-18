@@ -27,16 +27,20 @@ type MutationRoot {
   nullableInt: Int
 }
 
-interface Animal {
+interface Animal @typePolicy(keyFields: "id"){
+  id: ID!
   species: String!
 }
 
 type Cat implements Animal & Animal2 {
+  id: ID!
   species: String!
   mustaches: Int!
+  bestFriend: Animal!
 }
 
 type Lion implements Animal {
+  id: ID!
   species: String!
   roar: String!
 }
